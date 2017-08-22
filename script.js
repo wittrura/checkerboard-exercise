@@ -11,14 +11,31 @@ function generateRandomHexColor(){
   return hexColor;
 }
 
-function populateBoard() {
+function parseRgbColor(colorArray) {
+  let rgbColor = 'rgb(';
+  rgbColor += colorArray.join(', ');
+  rgbColor += ')';
+  return rgbColor;
+}
+
+function populateBoard(startColor1, startColor2) {
+  let color1 = startColor1;
+  let color2 = startColor2;
   for (var i = 0; i < 81; i++) {
     let newDiv = document.createElement('div');
     newDiv.setAttribute('style', "width: 11.1%; float: left; padding-bottom: 11.1%;");
-    newDiv.style.backgroundColor = generateRandomHexColor();
+
+    if (i % 2 === 0 ) {
+      newDiv.style.backgroundColor = parseRgbColor(color1);
+    } else {
+      newDiv.style.backgroundColor = parseRgbColor(color2);
+    }
     document.body.appendChild(newDiv);
+
+    color1[1] = color1[1] + 1;
+    color2[1] = color2[1] + 1;
   }
 }
 
-populateBoard();
-console.log(generateRandomHexColor());
+populateBoard([220, 120, 0], [60, 150, 180]);
+// console.log(parseRgbColor([246, 180, 0]));
