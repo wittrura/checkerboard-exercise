@@ -20,5 +20,13 @@ function populateBoard() {
   }
 }
 
+function updateColors () {
+  let colorDivs = document.getElementsByTagName('div');
+  for (var i = 0; i < colorDivs.length; i++) {
+    colorDivs[i].style.backgroundColor = generateRandomHexColor();
+  }
+  setTimeout(updateColors, 2000);
+}
+
 populateBoard();
-console.log(generateRandomHexColor());
+updateColors();
