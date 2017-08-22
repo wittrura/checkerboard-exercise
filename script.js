@@ -26,7 +26,7 @@ function updateColors () {
   for (var i = 0; i < colorDivs.length; i++) {
     colorDivs[i].style.backgroundColor = generateRandomHexColor();
   }
-  setTimeout(updateColors, 2000);
+  setTimeout(updateColors, 1500);
 }
 
 // updates a randomly selected div
@@ -35,10 +35,21 @@ function updateColorsSequential() {
     let colorDivs = document.getElementsByTagName('div');
     let randomDiv = colorDivs[Math.floor(Math.random() * colorDivs.length)];
     randomDiv.style.backgroundColor = generateRandomHexColor();
-  }, 100);
+  }, 25);
 }
 
+function playMusic() {
+  // let audio = document.createElement('audio');
+  // audio.setAttribute('preload', 'auto');
+  // audio.autobuffer = true;
+  // audio.setAttribute('src', './LOLO3BOS.mid')
+  // audio.load();
+  var audio = new Audio('36-Rm2-Dr.wilyStage1.ogg');
+  audio.loop = true;
+  audio.play();
+}
 
 populateBoard();
 updateColors();
 updateColorsSequential();
+playMusic();
